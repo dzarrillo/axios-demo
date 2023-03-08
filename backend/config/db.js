@@ -5,14 +5,14 @@ dotenv.config();
 const connectDB = async () => {
   try {
     mongoose.set("strictQuery", true);
-    const conn = await mongoose.connect(process.env.DATABASE_URL, {
+    const conn = await mongoose.connect(process.env.TEST_DATABASE_URL, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       //   useCreateIndex: true,
     });
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log(` 2 - MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.error(` 2 - Error: ${error.message}`);
     process.exit(1);
   }
 };

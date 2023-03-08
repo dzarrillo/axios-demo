@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const connectDB = require("./config/db");
-const goalsRoutes = require("./routes/goalsRoutes.js");
+const skillsRoutes = require("./routes/skillsRoutes.js");
 const app = express();
 
 dotenv.config();
@@ -9,8 +9,11 @@ dotenv.config();
 connectDB();
 
 app.use(express.json());
-app.use("/api/goals", goalsRoutes);
+app.use("/api/skills", skillsRoutes);
 
+// app.post("/post", async (req, res) => {
+//   console.log("inside post function");
+// });
 // custom error handling
 // app.use((req, res, next) => {
 //   const error = new Error(`Not found - ${req.originalUrl}`);
