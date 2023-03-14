@@ -5,6 +5,7 @@ axiosClient.defaults.baseURL = "/api/";
 
 axiosClient.defaults.headers = {
   "Content-Type": "application/json",
+  // "Content-Type": "application/x-www-form-urlencoded",
   Accept: "application/json",
 };
 
@@ -19,6 +20,9 @@ export function getRequest(URL) {
 }
 
 export function postRequest(URL, payload) {
+  console.log(
+    `Post URL is ${axiosClient.defaults.baseURL + URL} & payload is ${payload}`
+  );
   return axiosClient.post(`/${URL}`, payload).then((response) => response);
 }
 
