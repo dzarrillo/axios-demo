@@ -1,36 +1,10 @@
 const express = require("express");
-const asyncHandler = require("express-async-handler");
-const Skills = require("../models/skillsModel");
 const router = express.Router();
+const { getSkills, setSkill } = require("../controllers/skillController");
 
-router.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const myskills = await Skills.find({});
+router.get("/", getSkills);
+router.post("/insert", setSkill);
 
-    res.json(myskills);
-  })
-);
-
-// @desc    Create a skill
-// @route   POST /api/skill
-// @access
-
-router.post(
-  "/",
-  asyncHandler(async (req, res) => {
-    if (!req.body.skill) {
-      res.status(400);
-      throw new Error("Please add a text field");
-    }
-
-    const skill = new Skills({
-      skill: req.body.skill,
-    });
-    const createdSkill = await skill.save();
-    res.json(createdSkill);
-    res.status(201).json(createdSkill);
-  })
-);
+// router.route("/").get(getSkills).post(setSkill);
 
 module.exports = router;

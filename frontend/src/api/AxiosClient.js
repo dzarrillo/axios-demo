@@ -5,6 +5,7 @@ axiosClient.defaults.baseURL = "/api/";
 
 axiosClient.defaults.headers = {
   "Content-Type": "application/json",
+  // "Content-Type": "application/x-www-form-urlencoded",
   Accept: "application/json",
 };
 
@@ -14,11 +15,11 @@ axiosClient.defaults.timeout = 2000;
 axiosClient.defaults.withCredentials = true;
 
 export function getRequest(URL) {
-  console.log(`URL is ${axiosClient.defaults.baseURL + URL}`);
   return axiosClient.get(`/${URL}`).then((response) => response);
 }
 
 export function postRequest(URL, payload) {
+  console.log(`Post URL is ${URL} & payload is ${payload}`);
   return axiosClient.post(`/${URL}`, payload).then((response) => response);
 }
 
