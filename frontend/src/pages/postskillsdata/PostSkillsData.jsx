@@ -2,26 +2,24 @@ import React, { useState } from "react";
 import { postRequest } from "../../api/AxiosClient";
 import axios from "axios";
 const PostSkillsData = () => {
-  const [skill, setSkill] = useState("");
+  const [mySkill, setMySkill] = useState({ skill: "" });
 
   const postSkill = (e) => {
     console.log(`value: ${e.target.value}`);
-    setSkill((prev) => e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    postMySkills();
+    // setMySkill((prev) => {skill: e.target.value});
+    setMySkill({ ...mySkill, skill: e.target.value });
   };
 
   async function postMySkills(e) {
-    e.preventDefault();
     try {
-      const url = "skills/created";
+      e.preventDefault();
+      console.log(`post value: ${mySkill.skill}`);
+      // const url = "/api/insert";
+      const url = "api/skills/insert";
 
       // const data = await postRequest(url, skill);
-      const data = await axios.post(url, skill);
-      console.log("Data Saved!" + skill);
+      const data = await axios.post(url, mySkill);
+      console.log("Data Saved!" + mySkill);
     } catch (err) {
       console.log(`Data not saved! ${err}`);
     }
@@ -30,7 +28,6 @@ const PostSkillsData = () => {
   return (
     <>
       <div>PostSkillsData</div>
-      {/* <form onSubmit={handleSubmit}> */}
       <form>
         <label>Skill</label>
         <input required type="text" onChange={postSkill} />

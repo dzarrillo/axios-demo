@@ -7,15 +7,14 @@ const GetData = () => {
   async function fetchSkills() {
     try {
       const mydata = await getRequest("skills");
-      console.log(mydata.data);
-      setSkills(mydata.data);
+      console.log(mydata.data.skills);
+      setSkills(mydata.data.skills);
     } catch (error) {
       console.log(`Error getting data - ${error.message} `);
     }
   }
   useEffect(() => {
     fetchSkills();
-    console.log(`Skills data`);
   }, []);
 
   return (

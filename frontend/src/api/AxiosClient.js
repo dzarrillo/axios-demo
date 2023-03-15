@@ -15,14 +15,11 @@ axiosClient.defaults.timeout = 2000;
 axiosClient.defaults.withCredentials = true;
 
 export function getRequest(URL) {
-  console.log(`URL is ${axiosClient.defaults.baseURL + URL}`);
   return axiosClient.get(`/${URL}`).then((response) => response);
 }
 
 export function postRequest(URL, payload) {
-  console.log(
-    `Post URL is ${axiosClient.defaults.baseURL + URL} & payload is ${payload}`
-  );
+  console.log(`Post URL is ${URL} & payload is ${payload}`);
   return axiosClient.post(`/${URL}`, payload).then((response) => response);
 }
 
