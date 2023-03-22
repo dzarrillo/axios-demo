@@ -8,7 +8,8 @@ const {
 
 router.get("/", getSkills);
 router.post("/insert", setSkill);
-router.delete("delete/:id", deleteSkill);
+// router.delete("/delete/:skill", deleteSkill);
+router.delete("/delete/:id", deleteSkill);
 // router.route("/").get(getSkills).post(setSkill);
 
 module.exports = router;

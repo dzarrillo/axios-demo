@@ -23,7 +23,8 @@ const DeleteSkillsData = () => {
     console.log(skill._id + " - " + skill.skill);
 
     try {
-      const data = await deleteRequest("?_id=" + skill._id);
+      // const data = await deleteRequest("?_id=" + skill._id);
+      const data = await deleteRequest(skill._id);
     } catch (err) {
       console.log(err);
     }

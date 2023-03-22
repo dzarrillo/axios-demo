@@ -30,25 +30,23 @@ const setSkill = asyncHandler(async (req, res) => {
 });
 
 // @desc    Delete skill
-// @route   DELETE /api/skill/:id
+// @route   DELETE /api/skill/delete/:id
 // @access  Private
 const deleteSkill = asyncHandler(async (req, res) => {
-  const skill = await SkillsModel.findById(req.params.id);
-  // const goal = await Goal.findById(req.params.id);
-  if (!skill) {
-    res.status(400);
-
-    throw new Error("Skill not found!");
-  }
-
-  try {
-    await skill.remove();
-    // await SkillsModel.findOneAndDelete(req.params.id);
-  } catch (error) {
-    console.log("Shit error");
-  }
-
-  res.status(200).json({ id: req.params.id });
+  // let mySkill = req.params.skill;
+  let myId = req.params.id;
+  console.log(myId);
+  SkillsModel.findByIdAndDelete(myId, function (err, docs) {
+    if (err) {
+      res.send("Error deleting data " + err);
+    } else {
+      if (docs == null) {
+        res.send("Skill not found!");
+      } else {
+        res.send(docs);
+      }
+    }
+  });
 });
 
 module.exports = {

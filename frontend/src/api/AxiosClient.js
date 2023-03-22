@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const axiosClient = Axios.create();
-axiosClient.defaults.baseURL = "/api/";
+axiosClient.defaults.baseURL = "/api";
 
 axiosClient.defaults.headers = {
   "Content-Type": "application/json",
@@ -28,5 +28,8 @@ export function patchRequest(URL, payload) {
 }
 
 export function deleteRequest(URL) {
-  return axiosClient.delete(`/${URL}`).then((response) => response);
+  console.log(`url ${URL}`);
+  return axiosClient
+    .delete(`/skills/delete/${URL}`)
+    .then((response) => response);
 }
