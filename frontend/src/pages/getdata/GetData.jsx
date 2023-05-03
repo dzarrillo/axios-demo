@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getRequest } from "../../api/AxiosClient";
+import Styles from "./GetData.module.css";
 
 const GetData = () => {
   const [skills, setSkills] = useState([]);
@@ -18,13 +19,13 @@ const GetData = () => {
   }, []);
 
   return (
-    <div>
+    <div className={Styles.getdata_skills}>
       <h1>GetData</h1>
       {!skills.length ? (
         <h1>No data</h1>
       ) : (
         skills.map((skill) => {
-          return <h2 key={skill._id}>{skill.skill}</h2>;
+          return <p key={skill._id}>{skill.skill}</p>;
         })
       )}
     </div>

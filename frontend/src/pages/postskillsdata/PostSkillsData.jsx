@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { postRequest } from "../../api/AxiosClient";
 import axios from "axios";
+import "./PostSkillsData.css";
+
 const PostSkillsData = () => {
   const [mySkill, setMySkill] = useState({ skill: "" });
 
@@ -27,9 +29,9 @@ const PostSkillsData = () => {
 
   return (
     <>
-      <div>PostSkillsData</div>
-      <form>
-        <label>Skill</label>
+      <h1 className="title">PostSkillsData</h1>
+      <form className="post-form">
+        <label className="skill__label">Skill</label>
         <input required type="text" onChange={postSkill} />
         <button onClick={postMySkills}>Submit</button>
       </form>

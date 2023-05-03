@@ -1,0 +1,15 @@
+.title{
+    text-align: center;
+}
+
+.no__data{
+    color: red;
+}
+
+.button__container{
+    padding: .5rem;
+}
+.button{
+    padding: 1rem;
+}
+
